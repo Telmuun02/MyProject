@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-Do application</title>
+        <link rel="stylesheet" href="ToDo/style/ToDo.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body class="body">
+        <h2>To-Do.exe</h2>
+        <div class="input-section">
+            <input class="name input-name" placeholder="write list">
+            <input class="calendar input-calendar" type="date">
+            <button class="button" onclick="addItem()">Add List</button>
+            <button class="button" onclick="resetList()">Reset List</button>
+        </div>
+        <label class="show-list">
+            <a class="show"></a>
+        </label>
+
+        <script src="ToDo/script/ToDo.js"></script>
+    </body>
+</html>
