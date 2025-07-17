@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Rock Paper Scissors</Title>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <a style="display: block; font-size: 40px;">Let's play games</a>
+        <div>
+            <button onclick="playGame('rock')" class="move">
+                <img src="image/rock.png" class="buttonImg">
+            </button>
+            <button onclick="playGame('paper')" class="move">
+                <img src="image/paper.png" class="buttonImg">
+            </button>
+            <button onclick="playGame('scissors');" class="move">
+                <img src="image/scissors.png" class="buttonImg">
+            </button>
+        </div>
+        <a style="padding-top: 100px;">Your Choice &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Choice</a>
+        <a style="display: block;">Result:</a>
+        <button onclick="clearItem()" class="restart-button">Restart</button>
+        <button onclick="autoPlay()" class="restart-button">On/Off</button>
+        <a></a>
+        <a style="display: block;">win: 0  lose: 0  tie: 0</a>
+
+        <script>
+            points = JSON.parse(localStorage.getItem('points')) || {
+                win: 0,
+                lose: 0,
+                tie: 0
+            };
+            document.querySelectorAll('a')[4].innerText = `win: ${points.win}  lose: ${points.lose}  tie: ${points.tie}`
+
+            const durs = ['rock', 'paper', 'scissors'];
+
+            function computerChoice(){
+                let computerRandom = durs[Math.floor(Math.random() * durs.length)];
+                return computerRandom;
+            }
+            
+            function playGame(playerChoice){
+                let computerRandom = computerChoice();
+                let result = '';
+                if (playerChoice === 'rock'){
+                    if (computerRandom === 'scissors'){
+                        result = 'win';
+                    }else if (computerRandom === 'paper'){
+                        result = 'lose';
+                    }else if (computerRandom === 'rock'){
+                        result = 'tie';
+                    }
+                }
+                if (playerChoice === 'paper'){
+                    if (computerRandom === 'scissors'){
+                        result = 'lose';
+                    }else if (computerRandom === 'paper'){
+                        result = 'tie';
+                    }else if (computerRandom === 'rock'){
+                        result = 'win';
+                    }
+                }
+                if (playerChoice === 'scissors'){
+                    if (computerRandom === 'scissors'){
+                        result = 'tie';
+                    }else if (computerRandom === 'paper'){
+                        result = 'win';
+                    }else if (computerRandom === 'rock'){
+                        result = 'lose';
+                    }
+                }
+
+                if (result == 'win') points.win++;
+                else if (result == 'lose') points.lose++;
+                else if (result == 'tie') points.tie++;
+
+                document.querySelectorAll('a')[1].innerHTML = `Your Choice
+                <img src=image/${playerChoice}.png class="buttonImg">
+                <img src=image/${computerRandom}.png class="buttonImg">
+                Computer Choice`
+
+                document.querySelectorAll('a')[2].innerHTML = `Result: ${result}`
+                
+
+                document.querySelectorAll('a')[4].innerText = `win: ${points.win}  lose: ${points.lose}  tie: ${points.tie}`;
+                localStorage.setItem('points', JSON.stringify(points));
+            }
+            function clearItem(){
+                localStorage.removeItem('points');
+                points.win = 0;
+                points.lose = 0;
+                points.tie = 0;
+                document.querySelectorAll('a')[4].innerText = `win: ${points.win}  lose: ${points.lose}  tie: ${points.tie}`;
+                document.querySelectorAll('a')[1].innerHTML = `Your Choice &nbsp;&nbsp&nbsp;Computer Choice`
+            }
+            
+            let Bool = false;
+
+            function autoPlay(){
+                let playerChoice = "";
+                Bool = !Bool;
+                //document.querySelectorAll('a')[3].innerHTML = `
+                //    <button class="restart-button" onclick="clearInterval(ID);">Stop</button>`
+                if (Bool === true){
+                    ID = setInterval(function() {
+                    playerChoice = durs[Math.floor(Math.random() * durs.length)];
+                    playGame(playerChoice);
+                    }, 1000);    
+                } else {
+                    clearInterval(ID);
+                }
+            }
+        </script>
+    </body>
+</html>

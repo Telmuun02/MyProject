@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Calculator
+        </title>
+
+        <link rel="stylesheet" href="style/video-style.css">
+    </head>
+    <body>
+        <h3>Calculator.exe</h3>
+        <div class="over-all-div"> 
+            <div class="flex">
+                <p id="result" class="orolt">A Number</p> 
+                <a id="lowerResult" class="bichver">Equal</a>
+            </div>
+            <div class="grid">
+                <button class="number" id="clear" onclick="AC()">AC</button>
+                <button class="number" id="uldegdel"onclick="print_sign('%')">%</button>
+                <button class="number" id="hasah" onclick="negative()">+/-</button>
+                <button class="uildel" id="add" onclick="print_sign('+')">+</button>
+                <button class="number" id="one" onclick="print_number(1)">1</button>
+                <button class="number" id="two" onclick="print_number(2)">2</button>
+                <button class="number" id="three" onclick="print_number(3)">3</button>
+                <button class="uildel" id="substract" onclick="print_sign('-')">-</button>
+                <button class="number" id="four" onclick="print_number(4)">4</button>
+                <button class="number" id="five" onclick="print_number(5)">5</button>
+                <button class="number" id="six" onclick="print_number(6)">6</button>
+                <button class="uildel" id="multiple" onclick="print_sign('*')">*</button>
+                <button class="number" id="seven" onclick="print_number(7)">7</button>
+                <button class="number" id="eight" onclick="print_number(8)">8</button>
+                <button class="number" id="nine" onclick="print_number(9)">9</button>
+                <button class="uildel" id="huvaah" onclick="print_sign('/')">/</button>
+                <button class="zero" id="zero" onclick="print_number(0)">0</button>
+                <button class="number" id="dot" onclick="dot('.')">.</button>
+                <button class="uildel" id="equal" onclick="equal()">=</button>
+            </div>
+        </div>
+
+        <script>
+            let result = ""; 
+            let next_sign = false;
+
+            document.addEventListener("keydown", function(event) {
+                if (event.key == "1") {
+                    document.getElementById("one").click();
+                }
+                if (event.key == "2") {
+                    document.getElementById("two").click();
+                }
+                if (event.key == "3") {
+                    document.getElementById("three").click();
+                }
+                if (event.key == "4") {
+                    document.getElementById("four").click();
+                }
+                if (event.key == "5") {
+                    document.getElementById("five").click();
+                }
+                if (event.key == "6") {
+                    document.getElementById("six").click();
+                }
+                if (event.key == "7") {
+                    document.getElementById("seven").click();
+                }
+                if (event.key == "8") {
+                    document.getElementById("eight").click();
+                }
+                if (event.key == "9") {
+                    document.getElementById("nine").click();
+                }
+                if (event.key == "0") {
+                    document.getElementById("zero").click();
+                }
+                if (event.key == "Backspace") {
+                    document.getElementById("clear").click();
+                }
+                if (event.key == "%") {
+                    document.getElementById("uldegdel").click();
+                }
+                if (event.key == "/") {
+                    document.getElementById("huvaah").click();
+                }
+                if (event.key == "+") {
+                    document.getElementById("add").click();
+                }
+                if (event.key == "_") {
+                    document.getElementById("hasah").click();
+                }
+                if (event.key == "Enter") {
+                    document.getElementById("equal").click();
+                }
+                if (event.key == "-") {
+                    document.getElementById("substract").click();
+                }
+                if (event.key == "*") {
+                    document.getElementById("multiple").click();
+                }
+                if (event.key == ".") {
+                    document.getElementById("dot").click();
+                }
+            });
+
+            function print_number(n){
+                result = result + n;
+                document.getElementById("result").innerText = result;
+                document.getElementById("result").style.color = "white";
+            }
+            function print_sign(n){
+                let part = result.trim();
+                let last = part[part.length - 1];
+                if (next_sign == true) {
+                    result = result + ')';
+                    next_sign = false;
+                }
+                if (!isNaN(last) || last == ')'){
+                result = result + ' ' + n + ' ';
+                document.getElementById("result").innerText = result;
+                document.getElementById("result").style.color = "white";
+                }
+            }
+            function dot(n){
+                let part = result.trim();
+                let last = part[part.length - 1];
+                if (!isNaN(last)){
+                result = result + n ;
+                document.getElementById("result").innerText = result;
+                document.getElementById("result").style.color = "white";
+                }
+            }
+            function AC() {
+                result = "A Number";
+                document.getElementById("result").innerText = result;
+                result = "Equal";
+                document.getElementById("lowerResult").innerText = result;
+                document.getElementById("result").style.color = "gray";
+                document.getElementById("lowerResult").style.color = "gray";
+                result = "";
+            }
+            function negative() {
+                if (result == ''){
+                    result = '-';
+                } else if (result[result.length - 1] == ' ') {
+                    result = result + '(-'; 
+                    next_sign = true;
+                }
+                document.getElementById("result").innerText = result;
+                document.getElementById("result").style.color = "white";
+            }
+            function equal(){
+                if (result[result.length - 1] == ' '){
+                    result = result.slice(0, result.length - 3);
+                }
+
+                let equal = eval(result); 
+                
+                document.getElementById("lowerResult").innerText = equal;
+                document.getElementById("lowerResult").style.color = "white";
+            }
+        </script>
+    </body>
+</html>

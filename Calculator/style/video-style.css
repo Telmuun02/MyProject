@@ -1,0 +1,91 @@
+.orolt {
+    background-color: rgb(60, 60, 60);
+    color: gray;
+    font-size: 20px;
+    border: none;
+}
+
+.over-all-div {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    padding-bottom: 20px;
+    background-color: black;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.flex { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(60, 60, 60);
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-width: 1px;
+    border: solid;
+    margin: 10px;
+}
+
+.bichver {
+    padding: 10px;
+    color: gray;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.number {
+    background-color: gray;
+    color: white;
+    height: 60px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.zero {
+    background-color: gray;
+    color: white;
+    height: 60px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    grid-column: span 2;
+}
+
+.uildel {
+    background-color: orange;
+    color: black;
+    height: 60px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.number:active { 
+    transform: scale(0.95);
+    background-color: rgb(67, 67, 67);
+}
+
+.uildel:active { 
+    transform: scale(0.95);
+    background-color: rgb(168, 109, 0);
+}
+
+.zero:active { 
+    transform: scale(0.95);
+    background-color: rgb(67, 67, 67);
+}
