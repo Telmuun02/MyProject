@@ -1,0 +1,18 @@
+.body {
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    margin-left: 750px;
+    margin-top: 300px;
+}
+
+.button {
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    margin-right: 30px;
+    margin-left: 50px;
+}
